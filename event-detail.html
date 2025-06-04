@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI小秘书 - 事件详情</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        .phone-frame {
+            width: 375px;
+            height: 812px;
+            border: 3px solid #1f2937;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .capsule-button {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 65px;
+            height: 30px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .status-badge {
+            animation: pulse 2s infinite;
+        }
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        .progress-circle {
+            stroke-dasharray: 251.2;
+            stroke-dashoffset: 125.6;
+            animation: progress 1s ease-out forwards;
+        }
+        @keyframes progress {
+            to {
+                stroke-dashoffset: 75.36;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="phone-frame mx-auto mt-8 relative">
+        <!-- 胶囊按钮 -->
+        <div class="capsule-button"></div>
+        
+        <!-- 主要内容区域 -->
+        <div class="h-full gradient-bg p-6 pt-16">
+            <!-- 顶部导航 -->
+            <div class="flex items-center justify-between mb-8">
+                <button class="w-10 h-10 rounded-full glass-effect flex items-center justify-center">
+                    <i class="fas fa-arrow-left text-white"></i>
+                </button>
+                <h1 class="text-white text-xl font-semibold">事件详情</h1>
+                <button class="w-10 h-10 rounded-full glass-effect flex items-center justify-center">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                </button>
+            </div>
+
+            <!-- 事件头部信息 -->
+            <div class="bg-white/95 rounded-3xl p-5 mb-4">
+                <div class="flex items-start justify-between mb-3">
+                    <div class="flex-1">
+                        <h2 class="text-gray-800 text-xl font-bold mb-2">客户会议</h2>
+                        <p class="text-gray-600 text-sm">与ABC公司讨论合作方案</p>
+                    </div>
+                    <div class="status-badge bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full ml-4">
+                        <i class="fas fa-star mr-1"></i>
+                        重要事件
+                    </div>
+                </div>
+
+                <!-- 时间信息 -->
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-3 mb-3">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-calendar text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-gray-800 font-medium">明天 15:00</h3>
+                            <p class="text-gray-600 text-sm">2024年1月16日 周二</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 预计时长 -->
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-2xl">
+                    <div class="flex items-center">
+                        <i class="fas fa-clock text-gray-500 mr-3"></i>
+                        <div>
+                            <p class="text-gray-800 font-medium text-sm">预计时长</p>
+                            <p class="text-gray-600 text-xs">90分钟</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 进度环 -->
+                    <div class="relative w-10 h-10">
+                        <svg class="progress-ring w-10 h-10" viewBox="0 0 84 84">
+                            <circle cx="42" cy="42" r="40" stroke="#e5e7eb" stroke-width="4" fill="none"/>
+                            <circle cx="42" cy="42" r="40" stroke="#3b82f6" stroke-width="4" fill="none" class="progress-circle"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-blue-600 text-xs font-bold">70%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 详细信息 -->
+            <div class="bg-white/95 rounded-3xl p-5 mb-4">
+                <h3 class="text-gray-800 font-semibold mb-3">详细信息</h3>
+                
+                <div class="space-y-3">
+                    <div class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-400 mt-1 mr-3"></i>
+                        <div>
+                            <p class="text-gray-800 font-medium text-sm">地点</p>
+                            <p class="text-gray-600 text-sm">会议室A / 线上会议</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <i class="fas fa-users text-gray-400 mt-1 mr-3"></i>
+                        <div>
+                            <p class="text-gray-800 font-medium text-sm">参与人员</p>
+                            <p class="text-gray-600 text-sm">张总监、李经理、王助理</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <i class="fas fa-file-alt text-gray-400 mt-1 mr-3"></i>
+                        <div>
+                            <p class="text-gray-800 font-medium text-sm">会议议程</p>
+                            <div class="text-gray-600 text-sm mt-1">
+                                <p>• 项目需求确认</p>
+                                <p>• 时间节点讨论</p>
+                                <p>• 预算方案商议</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <i class="fas fa-bell text-gray-400 mt-1 mr-3"></i>
+                        <div>
+                            <p class="text-gray-800 font-medium text-sm">提醒设置</p>
+                            <p class="text-gray-600 text-sm">提前15分钟提醒</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI智能提醒 -->
+            <div class="glass-effect rounded-3xl p-4 mb-4">
+                <div class="flex items-center mb-3">
+                    <i class="fas fa-robot text-white mr-2"></i>
+                    <h3 class="text-white font-semibold">AI智能提醒</h3>
+                </div>
+                
+                <div class="bg-white/20 rounded-2xl p-3">
+                    <div class="flex items-start">
+                        <i class="fas fa-lightbulb text-yellow-300 mt-1 mr-3"></i>
+                        <div>
+                            <p class="text-white text-sm font-medium mb-1">建议准备</p>
+                            <p class="text-white/80 text-xs">根据会议内容，建议提前准备项目方案PPT和预算表格</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="grid grid-cols-3 gap-3 mb-4">
+                <button class="glass-effect rounded-2xl p-3 text-center">
+                    <i class="fas fa-edit text-white text-lg mb-1"></i>
+                    <p class="text-white text-xs">编辑</p>
+                </button>
+                
+                <button class="glass-effect rounded-2xl p-3 text-center">
+                    <i class="fas fa-share text-white text-lg mb-1"></i>
+                    <p class="text-white text-xs">分享</p>
+                </button>
+                
+                <button class="bg-red-500/80 rounded-2xl p-3 text-center">
+                    <i class="fas fa-trash text-white text-lg mb-1"></i>
+                    <p class="text-white text-xs">删除</p>
+                </button>
+            </div>
+
+            <!-- 底部完成按钮 - 改为普通定位 -->
+            <div class="mt-4">
+                <button class="w-full bg-green-500 text-white py-3 rounded-2xl font-medium shadow-lg">
+                    <i class="fas fa-check mr-2"></i>
+                    标记为已完成
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
